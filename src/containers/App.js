@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 import '../assets/css/App.css';
 
-import HelloWorld from '../components/App/HelloWorld';
+import Task from '../components/App/task';
 
 class App extends Component {
   render() {
     return (
       <body>
-        <HelloWorld />
+        <Task />
       </body>
     );
   }

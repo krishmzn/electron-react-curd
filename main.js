@@ -5,7 +5,6 @@ const {app, BrowserWindow, ipcMain, Menu, Tray} = require('electron');
 const path = require('path')
 const url = require('url')
 
-const {AUTO_DOWNLOAD, AUTO_DOWNLOAD_CLICK} = require('./util/constants');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -68,7 +67,7 @@ function createWindow() {
 });
 
   const menu = Menu.buildFromTemplate(mainMenuTemplate);
-    Menu.setApplicationMenu(menu);
+    Menu.setApplicationMenu(null);
     const contextMenu  = Menu.buildFromTemplate(contextMenuTemplate);
     tray.setContextMenu(contextMenu);
 }
@@ -155,9 +154,9 @@ const contextMenuTemplate = [
 ]; 
 
 //IPC communication.
-ipcMain.on(AUTO_DOWNLOAD, (event,arg) =>{
-  console.log("here 001",arg);
-});
+// ipcMain.on(AUTO_DOWNLOAD, (event,arg) =>{
+//   console.log("here 001",arg);
+// });
 
 
 

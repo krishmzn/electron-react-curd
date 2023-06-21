@@ -1,17 +1,1 @@
-[
-    {
-        "description": "NextJS is a framework",
-        "id": 1,
-        "title": "NextJS"
-    },
-    {
-        "id": 2,
-        "title": "ReactJS",
-        "description": "ReactJS is a liabrary"
-    },
-    {
-        "description": "new detail edited",
-        "id": 1687325682724,
-        "title": "new post edited"
-    }
-]
+[{"description":"NextJS is a framework","id":1,"title":"NextJS"},{"id":2,"title":"ReactJS","description":"ReactJS is a liabrary"}]

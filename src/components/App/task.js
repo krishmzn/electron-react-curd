@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import electron, { ipcRenderer } from 'electron';
 import './task.css'
 
-export default function HelloWorld() {
+export default function Tasks() {
   const [tasks, setTasks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [addItem, setAddItem] = useState('');
