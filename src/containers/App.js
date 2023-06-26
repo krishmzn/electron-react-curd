@@ -8,10 +8,7 @@ import QuizApp from '../components/App/quiz';
 class App extends Component {
   render() {
     return (
-      <body>
-        {/* <Task /> */}
         <QuizApp />
-      </body>
     );
   }
 }
