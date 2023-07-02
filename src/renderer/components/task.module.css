@@ -1,0 +1,96 @@
+.sectionContainer {
+  background-color: #fff;
+  width: 70vw;
+  margin: 3rem 0;
+  padding: 3rem;
+}
+
+
+.search {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.search > input {
+  text-align: left;
+  padding: 1rem 7rem;
+}
+
+.aditm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: .3rem;
+}
+
+.delete {
+    background-color: red;
+    color: white;
+}
+
+.delete:hover {
+  background-color: red;
+  box-shadow: 0px 2px 5px 1px red;
+}
+
+.box {
+    padding: 2rem 0;
+    width: 100%;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 5px 10px 0px #fff;
+    border: 0px;
+}
+
+.box > .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: .3rem;
+
+    padding: 1.5rem 5rem;
+    border-bottom: 1px solid #1b102e;
+    border-radius: 0;
+}
+
+.main > h2 {
+    font-weight: bolder;
+}
+
+.main > div > * {
+    margin-right: 1rem;
+}
+
+.main > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.aditm > div {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.aditm > div > * {
+    margin-right: .5rem;
+}
+
+.aditm > div > button {
+    color: white;
+    background-color: #845EC2;
+}
+
+.aditm > div > button:hover {
+    background-color: #845EC2;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px 1px #845EC2;
+  }
+
