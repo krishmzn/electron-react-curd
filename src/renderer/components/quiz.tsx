@@ -13,7 +13,7 @@ function QuizApp() {
   const [score, setScore] = useState(0);
 
   // Timer
-  const defaultTimer = 5;
+  const defaultTimer = 15;
   const [timer, setTimer] = useState(defaultTimer);
 
   useEffect(() => {
@@ -23,7 +23,6 @@ function QuizApp() {
 
     if (currentQuestion <= quizData.length) {
       if (timer === 0) {
-        console.log(quizData.length, currentQuestion);
         setTimer(defaultTimer);
         nextQuestion();
 
@@ -94,7 +93,7 @@ function QuizApp() {
   }
 
   function submitQuiz() {
-    console.log('Submit Clicked');
+    // console.log('Submit Clicked');
     let newScore = 0;
     // Calculate score
     for (let i = 0; i < quizData.length; i++) {
@@ -105,7 +104,7 @@ function QuizApp() {
 
     setScore(newScore);
     setShowResult(true);
-    console.log('submit complete');
+    // console.log('submit complete');
   }
 
   return (
@@ -116,7 +115,7 @@ function QuizApp() {
 
       {showResult == false ? (
         <main className="quiz-box">
-          <div className={styles.timer}>{timer}</div>
+          <span className={styles.timer}><p>{timer}</p></span>
           <header>
             <h2 id="question">{quizData[currentQuestion].question}</h2>
             {currentPage == quizData.length + 1 ? (
