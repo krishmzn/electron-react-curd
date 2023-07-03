@@ -7,6 +7,8 @@
   background-color: #fff;
   padding: 3rem;
 
+  position: relative;
+
   display: flex;
   flex-direction: column;
 }
@@ -26,10 +28,20 @@ main > aside {
   align-items: center;
 }
 
-main > aside > *{
-  margin-right: .5rem;
+main > aside > * {
+  margin-right: 0.5rem;
 }
 
+.timer {
+  display: block;
+  position: absolute;
+  top: .7rem;
+  right: .7rem;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 100%;
+  background-color: rgba(238, 164, 155, 0.3);
+}
 
 label {
   display: flex;
@@ -40,7 +52,7 @@ label > * {
   margin-bottom: 0.1rem;
 }
 
-input[type="radio"] {
+input[type='radio'] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -52,8 +64,8 @@ input[type="radio"] {
   margin-right: 8px;
 }
 
-input[type="radio"]:before {
-  content: "";
+input[type='radio']:before {
+  content: '';
   display: block;
   width: 60%;
   height: 60%;
@@ -61,11 +73,11 @@ input[type="radio"]:before {
   border-radius: 50%;
 }
 
-input[type="radio"]:checked:before {
+input[type='radio']:checked:before {
   color: #007aff;
 }
 
-input[type="radio"]:focus {
+input[type='radio']:focus {
   box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.25);
 }
 
@@ -85,12 +97,10 @@ button:hover {
   box-shadow: 0px 2px 5px 1px #0066cc;
 }
 
-
 .prev {
   background-color: #fff;
   color: #0066cc;
   border: 1px solid#0066cc;
-  height: 1.8rem;
 }
 
 .prev:hover {
@@ -99,12 +109,14 @@ button:hover {
   cursor: pointer;
 }
 
-.submit{
+.submit {
   background-color: red;
 }
 
-.submit:hover{
+.submit:hover {
   background-color: red;
   cursor: pointer;
   box-shadow: 0px 2px 5px 1px red;
 }
+
+

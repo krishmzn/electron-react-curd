@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import quizData from '../../../gamedata/gamedata.json';
 import './task.module.css';
 import styles from './quiz.module.css';
@@ -12,6 +12,31 @@ function QuizApp() {
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
 
+  // Timer
+  const defaultTimer = 5;
+  const [timer, setTimer] = useState(defaultTimer);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer((timer) => timer - 1);
+    }, 1000);
+
+    if (currentQuestion <= quizData.length) {
+      if (timer === 0) {
+        console.log(quizData.length, currentQuestion);
+        setTimer(defaultTimer);
+        nextQuestion();
+
+        if (currentQuestion > quizData.length - 2) {
+          clearInterval(interval); // stop the interval
+          submitQuiz();
+        }
+      }
+    }
+
+    return () => clearInterval(interval);
+  }, [timer]);
+
   // navigation
   const navigate = useNavigate();
 
@@ -21,10 +46,15 @@ function QuizApp() {
   // navigation
 
   function nextQuestion() {
+    setTimer(defaultTimer);
+
     // Get user answer
-    const userAnswer = (
-      document.querySelector('input[name="choice"]:checked') as HTMLInputElement
-    ).value;
+    const inputElement = document.querySelector(
+      'input[name="choice"]:checked'
+    ) as HTMLInputElement;
+    const userAnswer = inputElement ? inputElement.value : '0';
+
+    console.log(userAnswer);
 
     setUserAnswers([...userAnswers, userAnswer]);
 
@@ -33,23 +63,19 @@ function QuizApp() {
     // Move to next question or show submit button
     if (currentQuestion < quizData.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
-    } else {
-      document.getElementById('next-button').style.display = 'none';
-      document.getElementById('choices').style.display = 'none';
-      document.getElementById('question').style.display = 'none';
-      document.getElementById('question').style.display = 'none';
-
-      document.getElementById('submit-button').style.display = 'block';
     }
+    //  else {
+    //   document.getElementById('next-button').style.display = 'none';
+    //   document.getElementById('choices').style.display = 'none';
+    //   document.getElementById('question').style.display = 'none';
+    //   document.getElementById('question').style.display = 'none';
+
+    //   document.getElementById('submit-button').style.display = 'block';
+    // }
   }
 
   function startOver() {
     console.log('Startover Clicked');
-    setCurrentPage(1);
-    setCurrentQuestion(0);
-    setUserAnswers([]);
-    setShowResult(false);
-    setScore(0);
     location.reload();
   }
 
@@ -79,6 +105,7 @@ function QuizApp() {
 
     setScore(newScore);
     setShowResult(true);
+    console.log('submit complete');
   }
 
   return (
@@ -89,6 +116,7 @@ function QuizApp() {
 
       {showResult == false ? (
         <main className="quiz-box">
+          <div className={styles.timer}>{timer}</div>
           <header>
             <h2 id="question">{quizData[currentQuestion].question}</h2>
             {currentPage == quizData.length + 1 ? (
@@ -110,29 +138,31 @@ function QuizApp() {
           </div>
           {/* <button id="next-button" onClick={previousQuestion}>back</button> */}
           <aside>
-            <button
+            {/* <button
               id="prev-button"
               onClick={previousQuestion}
               className={styles.prev}
             >
               Back
-            </button>
-            <button
-              id="next-button"
-              onClick={nextQuestion}
-              className={styles.next}
-            >
-              Next
-            </button>
+            </button> */}
 
-            <button
-              id="submit-button"
-              className={styles.submit}
-              onClick={submitQuiz}
-              style={{ display: 'none' }}
-            >
-              Submit
-            </button>
+            {currentQuestion === quizData.length - 1 ? (
+              <button
+                id="submit-button"
+                className={styles.submit}
+                onClick={submitQuiz}
+              >
+                Submit
+              </button>
+            ) : (
+              <button
+                id="next-button"
+                onClick={nextQuestion}
+                className={styles.next}
+              >
+                Next
+              </button>
+            )}
           </aside>
         </main>
       ) : (
